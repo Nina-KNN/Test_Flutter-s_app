@@ -30,13 +30,29 @@ class RandomColorsState extends State<RandomColor> {
         child: Scaffold(
           backgroundColor: color,
           body: Center(
-            child: Text(
-              'Hey there',
-              style: TextStyle(
-                color: Colors.amberAccent,
-                fontSize: 32.0,
-                fontWeight: FontWeight.bold,
-              ),
+            child: Stack(
+              children: <Widget>[
+                Text(
+                  'Hey there',
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 6
+                        ..color = Colors.deepOrange
+                  ),
+                ),
+
+                Text(
+                  'Hey there',
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.amberAccent,
+                  ),
+                ),
+              ]
             ),
           ),
         ),
@@ -44,3 +60,4 @@ class RandomColorsState extends State<RandomColor> {
     );
   }
 }
+
