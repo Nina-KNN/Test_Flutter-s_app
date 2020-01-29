@@ -24,11 +24,24 @@ class RandomColorsState extends State<RandomColor> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        setState(() { color = Color(Random().nextInt(0xffffffff)); });
+        setState(() {
+          color = Color(Random().nextInt(0xffffffff));
+        });
       },
       child: Container(
         child: Scaffold(
           backgroundColor: color,
+
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.assessment),
+//                onPressed: ,
+              ),
+            ],
+          ),
+
           body: Center(
             child: Stack(
               children: <Widget>[
@@ -59,5 +72,5 @@ class RandomColorsState extends State<RandomColor> {
       ),
     );
   }
-}
 
+}
