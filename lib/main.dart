@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:toast/toast.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,6 +20,7 @@ class RandomColor extends StatefulWidget {
 
 class RandomColorsState extends State<RandomColor> {
   Color color;
+  int pressedNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class RandomColorsState extends State<RandomColor> {
       onTap: (){
         setState(() {
           color = Color(Random().nextInt(0xffffffff));
+          pressedNumber++;
         });
       },
       child: Container(
@@ -37,7 +40,14 @@ class RandomColorsState extends State<RandomColor> {
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.assessment),
-//                onPressed: ,
+                onPressed: () {
+                  Toast.show(
+                      'Screen was pressed ' + pressedNumber.toString() + (pressedNumber > 1 ? ' times' : ' time'),
+                    context,
+                    duration: Toast.LENGTH_SHORT,
+                    gravity:  Toast.BOTTOM
+                  );
+                }
               ),
             ],
           ),
