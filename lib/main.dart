@@ -45,9 +45,41 @@ class RandomColorsState extends State<RandomColor> {
                       'Screen was pressed ' + pressedNumber.toString() + (pressedNumber > 1 ? ' times' : ' time'),
                     context,
                     duration: Toast.LENGTH_SHORT,
-                    gravity:  Toast.BOTTOM
+                    gravity:  Toast.BOTTOM,
+                    textColor: Color(0xFFE64A19),
+                    backgroundColor: Color(0xFFFFF8E1),
                   );
                 }
+              ),
+              IconButton(
+                icon: Icon(Icons.delete),
+                onPressed: () {
+                  showDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Delete'),
+                        content: const Text('Do you realy want to delete the number of clicks on the screen?'),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('NO'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          FlatButton(
+                            child: Text('YES'),
+                            onPressed: () {
+                              pressedNumber = 0;
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                        backgroundColor: Color(0xFFFFF8E1),
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),
