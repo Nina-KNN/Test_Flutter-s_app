@@ -19,7 +19,7 @@ class RandomColor extends StatefulWidget {
 }
 
 class RandomColorsState extends State<RandomColor> {
-  Color color;
+  Color color = Color(0xFF00E676);
   int pressedNumber = 0;
 
   @override
@@ -27,7 +27,7 @@ class RandomColorsState extends State<RandomColor> {
     return GestureDetector(
       onTap: (){
         setState(() {
-          color = Color(Random().nextInt(0xffffffff));
+          color = Color(Random().nextInt(0xFFFFFFFF + 1));
           pressedNumber++;
         });
       },
@@ -42,7 +42,7 @@ class RandomColorsState extends State<RandomColor> {
                 icon: Icon(Icons.assessment),
                 onPressed: () {
                   Toast.show(
-                      'Screen was pressed ' + pressedNumber.toString() + (pressedNumber > 1 ? ' times' : ' time'),
+                    'Screen was pressed ' + pressedNumber.toString() + (pressedNumber > 1 ? ' times' : ' time'),
                     context,
                     duration: Toast.LENGTH_SHORT,
                     gravity:  Toast.BOTTOM,
